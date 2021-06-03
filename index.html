@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Template</title>
@@ -16,18 +17,25 @@
 
         .center {
             text-align: center;
+			 display: block;
+			 margin: auto;
+  			 margin-left: auto;
+  			 margin-right: auto;
+  			 width: 50%;
         }
+
     </style>
 </head>
 <body>
     
-    <div class="d-flex justify-content-center align-items-center m-0 p-0 vh-100" style="background-color: cadetblue;">
+    <div class="d-flex justify-content-center align-items-center m-0 p-0 vh-100" style="background-color: #0096a1;">
         
-        <div class="" style="color: white; width: 30%;">
-            <p class="center">ESET Quiz</p>
-            <p class="center">Complete on:</p> 
-            <p class="center" id="time">1.00PM</p>
-            <p class="center" id="date">18 MAY 2021</p>
+        <div class="" style="color: white; width: 30%; font-style: Fedra Sans Alt Pro LF – Bold; font-size:36px">
+			 <img src="https://cdn.yellowmessenger.com/o1uJbpytXBGz1622694731327.png" alt="logo" width="200" height="200" class="center">
+            <p class="center">I completed the quiz on:</p>
+			 <p class="center" id="date" style="color: #ffc425">18 MAY 2021</p>
+            <p class="center" id="time" style="color: #ffc425">1.00PM</p>
+            
         </div>
 
     </div>
@@ -43,13 +51,15 @@
        
 
         function formatAMPM(date) {
-        let hours = date.getHours();
+        let hours = date.getHours() + 2;
+		 const inc = 1000 * 60 * 60 * (0.5);
+		 let sgtime = (hours) % 24;
         let minutes = date.getMinutes();
-        let ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
+        let ampm = sgtime >= 12 ? 'PM' : 'AM';
+        sgtime = sgtime % 12;
+        sgtime = sgtime ? sgtime : 12; // the hour '0' should be '12'
         minutes = minutes < 10 ? '0'+minutes : minutes;
-        let strTime = hours + ':' + minutes + ' ' + ampm;
+        let strTime = sgtime + ':' + minutes + ' ' + ampm;
         return strTime;
         }
 
